@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>José Manuel González | Portafolio Tech</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #1e293b, #0ea5e9);
+      padding: 60px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.4rem;
+      color: white;
+    }
+    header p {
+      margin-top: 10px;
+      font-size: 1.1rem;
+      color: #dbeafe;
+    }
+    nav {
+      text-align: center;
+      background: #111827;
+      padding: 12px;
+    }
+    nav a {
+      color: #93c5fd;
+      text-decoration: none;
+      margin: 0 12px;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+    section {
+      margin-bottom: 30px;
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    }
+    h2 {
+      color: #38bdf8;
+      margin-top: 0;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #f8fafc;
+      font-size: 1.05rem;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 14px;
+      background: #0ea5e9;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>José Manuel González</h1>
+    <p>Ingeniero Civil Industrial | Data & Process Analyst | Power BI • Python • SQL</p>
+  </header>
+
+  <nav>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#cv">CV</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <div class="container">
+
+    <section id="sobre-mi">
+      <h2>Sobre mí</h2>
+      <p>
+        Soy Ingeniero Civil Industrial con experiencia en mejora continua, control de gestión
+        y optimización de procesos. Actualmente estoy fortaleciendo mi perfil hacia el área
+        tecnológica, combinando mi trayectoria en procesos con herramientas como Power BI,
+        Python y SQL para aportar soluciones basadas en datos.
+      </p>
+    </section>
+
+    <section id="proyectos">
+      <h2>Proyectos destacados</h2>
+      <div class="projects">
+
+        <div class="card">
+          <h3>Sistema de Gestión de Contactos</h3>
+          <p>Proyecto en Python orientado al desarrollo de una aplicación para registrar, editar, eliminar y buscar contactos.</p>
+          <a class="btn" href="https://github.com/JsManuelG/Proyecto-Modulo-3---Programacion-en-Python" target="_blank">Ver repositorio</a>
+        </div>
+
+        <div class="card">
+          <h3>Análisis Exploratorio de Datos - ComercioYA</h3>
+          <p>Proyecto de EDA con Python para identificar patrones de compra, relaciones entre variables y hallazgos relevantes para decisiones comerciales.</p>
+          <a class="btn" href="https://github.com/JsManuelG/Proyecto-Modulo-5---Analisis-Exploratorio-de-Datos-ComercioYA-" target="_blank">Ver repositorio</a>
+        </div>
+
+        <div class="card">
+          <h3>Inferencia Estadística - Hábitos Saludables</h3>
+          <p>Análisis estadístico sobre sueño, alimentación y actividad física en estudiantes, aplicando técnicas de inferencia y visualización.</p>
+          <a class="btn" href="https://github.com/JsManuelG/Proyecto-Modulo-6---Inferencia-Estadistica-de-Habitos-Saludables-en-Estudiantes" target="_blank">Ver repositorio</a>
+        </div>
+
+        <div class="card">
+          <h3>Base de Datos SQLite - ComercioYA</h3>
+          <p>Diseño y manipulación de tablas para almacenar y consultar información de clientes, productos y ventas.</p>
+          <a class="btn" href="https://github.com/JsManuelG/Proyecto-Modulo-7---Creaci-n-y-Manipulaci-n-de-Tablas-con-SQLite-ComercioYA-" target="_blank">Ver repositorio</a>
+        </div>
+
+        <div class="card">
+          <h3>Dashboard BI de Desempeño Comercial</h3>
+          <p>Informe interactivo en Power BI con integración de datos, modelado y visualización para análisis comercial.</p>
+          <a class="btn" href="https://github.com/JsManuelG/Proyecto-Modulo-8---Fundamentos-Business-Intelligence-Informe-de-Desempe-o-Comercial-Interactivo-." target="_blank">Ver repositorio</a>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="cv">
+      <h2>CV y perfil profesional</h2>
+      <p>Puedes descargar mi perfil profesional y CV actualizado aquí:</p>
+      <a class="btn" href="empleabilidad_jose_gonzalez.pdf" target="_blank">Ver PDF</a>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p><strong>Email:</strong> jsm.gover@gmail.com</p>
+      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/" target="_blank" style="color:#93c5fd;">Agregar aquí tu perfil</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/JsManuelG" target="_blank" style="color:#93c5fd;">github.com/JsManuelG</a></p>
+    </section>
+
+  </div>
+
+  <footer>
+    © 2026 José Manuel González | Portafolio profesional
+  </footer>
+
+</body>
+</html>
