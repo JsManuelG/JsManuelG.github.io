@@ -1,177 +1,720 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>José Manuel González | Portafolio Tech</title>
   <style>
+    :root {
+      --bg: #0b1120;
+      --panel: #111827;
+      --panel-2: #1f2937;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --primary: #38bdf8;
+      --primary-2: #0ea5e9;
+      --border: #334155;
+      --white: #ffffff;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(14,165,233,0.12), transparent 30%),
+        radial-gradient(circle at top right, rgba(56,189,248,0.08), transparent 25%),
+        var(--bg);
+      color: var(--text);
       line-height: 1.6;
     }
-    header {
-      background: linear-gradient(135deg, #1e293b, #0ea5e9);
-      padding: 60px 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.4rem;
-      color: white;
-    }
-    header p {
-      margin-top: 10px;
-      font-size: 1.1rem;
-      color: #dbeafe;
-    }
-    nav {
-      text-align: center;
-      background: #111827;
-      padding: 12px;
-    }
-    nav a {
-      color: #93c5fd;
+
+    a {
+      color: var(--primary);
       text-decoration: none;
-      margin: 0 12px;
-      font-weight: bold;
     }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 30px 20px;
+      width: min(92%, var(--max));
+      margin: 0 auto;
     }
-    section {
-      margin-bottom: 30px;
-      background: #1e293b;
-      padding: 24px;
-      border-radius: 14px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(11, 17, 32, 0.8);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
     }
-    h2 {
-      color: #38bdf8;
-      margin-top: 0;
+
+    .nav-inner {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
     }
-    .projects {
+
+    .brand {
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .hero {
+      padding: 90px 0 60px;
+    }
+
+    .hero-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
     }
-    .card {
-      background: #0f172a;
-      border: 1px solid #334155;
+
+    .hero-main,
+    .hero-side,
+    .section-card,
+    .project-card,
+    .cv-card,
+    .contact-card {
+      background: linear-gradient(180deg, rgba(31,41,55,0.9), rgba(17,24,39,0.95));
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: 42px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.1px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.05;
+      color: var(--white);
+    }
+
+    .hero-subtitle {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 62ch;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
       border-radius: 12px;
-      padding: 18px;
+      font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      border: 1px solid transparent;
     }
-    .card h3 {
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: var(--white);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .metric {
+      padding: 16px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .hero-side {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .profile-box {
+      padding: 22px;
+      border-radius: 16px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    .profile-box h3 {
       margin-top: 0;
-      color: #f8fafc;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+
+    .profile-box p {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      color: #bae6fd;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .section {
+      padding: 16px 0 22px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin: 0 0 18px;
+      color: var(--white);
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 72ch;
+      margin-bottom: 26px;
+    }
+
+    .section-card {
+      padding: 28px;
+    }
+
+    .value-grid,
+    .stack-grid,
+    .projects-grid,
+    .contact-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .value-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stack-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .value-item,
+    .stack-item,
+    .project-card,
+    .contact-card {
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .value-item h3,
+    .stack-item h3,
+    .project-card h3,
+    .contact-card h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--white);
       font-size: 1.05rem;
     }
-    .card p {
-      font-size: 0.95rem;
+
+    .value-item p,
+    .stack-item p,
+    .project-card p,
+    .contact-card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-bottom: 0;
+    }
+
+    .stack-item ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 250px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    .project-top p {
+      margin-bottom: 16px;
+    }
+
+    .project-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .project-badge {
+      font-size: 0.82rem;
       color: #cbd5e1;
+      background: rgba(148, 163, 184, 0.08);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      border-radius: 999px;
+      padding: 6px 10px;
     }
-    .btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 14px;
-      background: #0ea5e9;
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
+
+    .project-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: auto;
     }
+
+    .cv-card {
+      padding: 26px;
+    }
+
+    .cv-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 720px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 14px;
+      background: #fff;
+    }
+
     footer {
+      padding: 36px 0 50px;
+      color: var(--muted);
       text-align: center;
-      padding: 25px;
-      color: #94a3b8;
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .value-grid,
+      .stack-grid,
+      .projects-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding-top: 60px;
+      }
+
+      .hero-main,
+      .hero-side,
+      .section-card,
+      .cv-card {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      iframe {
+        height: 520px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>José Manuel González</h1>
-    <p>Ingeniero Civil Industrial | Data & Process Analyst | Power BI • Python • SQL</p>
-  </header>
-
-  <nav>
-    <a href="#sobre-mi">Sobre mí</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#cv">CV</a>
-    <a href="#contacto">Contacto</a>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">José Manuel González</div>
+      <div class="nav-links">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#propuesta">Valor</a>
+        <a href="#stack">Stack</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#cv">CV</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
   </nav>
 
-  <div class="container">
+  <main class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-main">
+          <span class="eyebrow">Portafolio profesional</span>
+          <h1>Transformo procesos y datos en decisiones con impacto.</h1>
+          <p class="hero-subtitle">
+            Soy Ingeniero Civil Industrial con trayectoria en mejora continua, control de gestión
+            y transformación organizacional. Actualmente proyecto mi perfil hacia roles de Data,
+            BI y tecnología, integrando experiencia de negocio con herramientas como Python, SQL y Power BI.
+          </p>
 
-    <section id="sobre-mi">
-      <h2>Sobre mí</h2>
-      <p>
-        Soy Ingeniero Civil Industrial con experiencia en mejora continua, control de gestión
-        y optimización de procesos. Actualmente estoy fortaleciendo mi perfil hacia el área
-        tecnológica, combinando mi trayectoria en procesos con herramientas como Power BI,
-        Python y SQL para aportar soluciones basadas en datos.
-      </p>
-    </section>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#proyectos">Ver proyectos</a>
+            <a class="btn btn-secondary" href="cv-jose-gonzalez.pdf" target="_blank">Abrir CV</a>
+            <a class="btn btn-secondary" href="https://github.com/JsManuelG" target="_blank">GitHub</a>
+          </div>
 
-    <section id="proyectos">
-      <h2>Proyectos destacados</h2>
-      <div class="projects">
-
-        <div class="card">
-          <h3>Sistema de Gestión de Contactos</h3>
-          <p>Proyecto en Python orientado al desarrollo de una aplicación para registrar, editar, eliminar y buscar contactos.</p>
-          <a class="btn" href="https://github.com/JsManuelG/Proyecto-Modulo-3---Programacion-en-Python" target="_blank">Ver repositorio</a>
+          <div class="hero-metrics">
+            <div class="metric">
+              <strong>15+ años</strong>
+              <span>Experiencia en procesos, gestión y mejora continua.</span>
+            </div>
+            <div class="metric">
+              <strong>5 proyectos</strong>
+              <span>Portafolio académico-técnico publicado en GitHub.</span>
+            </div>
+            <div class="metric">
+              <strong>Data + Negocio</strong>
+              <span>Perfil híbrido orientado a análisis, reporting y transformación digital.</span>
+            </div>
+          </div>
         </div>
 
-        <div class="card">
-          <h3>Análisis Exploratorio de Datos - ComercioYA</h3>
-          <p>Proyecto de EDA con Python para identificar patrones de compra, relaciones entre variables y hallazgos relevantes para decisiones comerciales.</p>
-          <a class="btn" href="https://github.com/JsManuelG/Proyecto-Modulo-5---Analisis-Exploratorio-de-Datos-ComercioYA-" target="_blank">Ver repositorio</a>
-        </div>
-
-        <div class="card">
-          <h3>Inferencia Estadística - Hábitos Saludables</h3>
-          <p>Análisis estadístico sobre sueño, alimentación y actividad física en estudiantes, aplicando técnicas de inferencia y visualización.</p>
-          <a class="btn" href="https://github.com/JsManuelG/Proyecto-Modulo-6---Inferencia-Estadistica-de-Habitos-Saludables-en-Estudiantes" target="_blank">Ver repositorio</a>
-        </div>
-
-        <div class="card">
-          <h3>Base de Datos SQLite - ComercioYA</h3>
-          <p>Diseño y manipulación de tablas para almacenar y consultar información de clientes, productos y ventas.</p>
-          <a class="btn" href="https://github.com/JsManuelG/Proyecto-Modulo-7---Creaci-n-y-Manipulaci-n-de-Tablas-con-SQLite-ComercioYA-" target="_blank">Ver repositorio</a>
-        </div>
-
-        <div class="card">
-          <h3>Dashboard BI de Desempeño Comercial</h3>
-          <p>Informe interactivo en Power BI con integración de datos, modelado y visualización para análisis comercial.</p>
-          <a class="btn" href="https://github.com/JsManuelG/Proyecto-Modulo-8---Fundamentos-Business-Intelligence-Informe-de-Desempe-o-Comercial-Interactivo-." target="_blank">Ver repositorio</a>
-        </div>
-
+        <aside class="hero-side">
+          <div class="profile-box">
+            <h3>Perfil objetivo</h3>
+            <p>
+              Busco oportunidades en analítica, reporting, procesos y transformación digital,
+              donde pueda aportar visión de negocio, capacidad analítica y aprendizaje continuo.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Power BI</span>
+              <span class="tag">Python</span>
+              <span class="tag">SQL</span>
+              <span class="tag">BPMN</span>
+              <span class="tag">ISO 9001</span>
+              <span class="tag">Control de gestión</span>
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section id="cv">
-      <h2>CV y perfil profesional</h2>
-      <p>Puedes descargar mi perfil profesional y CV actualizado aquí:</p>
-      <a class="btn" href="CV_José_Manuel.pdf" target="_blank">Ver PDF</a>
+    <section class="section" id="sobre-mi">
+      <h2 class="section-title">Sobre mí</h2>
+      <div class="section-card">
+        <p>
+          Mi trayectoria profesional ha estado centrada en optimizar procesos, construir indicadores,
+          mejorar flujos de información y apoyar la toma de decisiones en organizaciones públicas y privadas.
+          Esa experiencia me permitió desarrollar una mirada estructurada, orientada a resultados y con fuerte foco en eficiencia operativa.
+        </p>
+        <p>
+          Hoy estoy consolidando una transición estratégica hacia la industria tecnológica, integrando herramientas
+          de análisis de datos y visualización para resolver problemas reales con una lógica de negocio sólida.
+          Mi propuesta de valor está en conectar operación, datos y mejora continua.
+        </p>
+      </div>
     </section>
 
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <p><strong>Email:</strong> jsm.gover@gmail.com</p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/" target="_blank" style="color:#93c5fd;">Agregar aquí tu perfil</a></p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/JsManuelG" target="_blank" style="color:#93c5fd;">github.com/JsManuelG</a></p>
+    <section class="section" id="propuesta">
+      <h2 class="section-title">Propuesta de valor</h2>
+      <p class="section-intro">
+        Más que solo manejar herramientas, aporto una visión integral: entiendo procesos, interpreto datos
+        y traduzco hallazgos en acciones concretas.
+      </p>
+      <div class="value-grid">
+        <div class="value-item">
+          <h3>Visión de negocio</h3>
+          <p>
+            Comprendo cómo los procesos, indicadores y decisiones impactan la operación y los resultados.
+          </p>
+        </div>
+        <div class="value-item">
+          <h3>Capacidad analítica</h3>
+          <p>
+            Estructuro problemas, analizo información y genero reportes útiles para apoyar decisiones.
+          </p>
+        </div>
+        <div class="value-item">
+          <h3>Adaptación tecnológica</h3>
+          <p>
+            Integro herramientas digitales y nuevas metodologías con foco en aprendizaje continuo y mejora.
+          </p>
+        </div>
+      </div>
     </section>
 
-  </div>
+    <section class="section" id="stack">
+      <h2 class="section-title">Stack y herramientas</h2>
+      <div class="stack-grid">
+        <div class="stack-item">
+          <h3>Datos y análisis</h3>
+          <ul>
+            <li>Python</li>
+            <li>Pandas</li>
+            <li>Estadística descriptiva e inferencial</li>
+            <li>Análisis exploratorio de datos</li>
+          </ul>
+        </div>
+        <div class="stack-item">
+          <h3>Visualización y BI</h3>
+          <ul>
+            <li>Power BI</li>
+            <li>Dashboards</li>
+            <li>KPIs</li>
+            <li>Reporting ejecutivo</li>
+          </ul>
+        </div>
+        <div class="stack-item">
+          <h3>Bases de datos</h3>
+          <ul>
+            <li>SQL</li>
+            <li>SQLite</li>
+            <li>Consultas y manipulación de tablas</li>
+            <li>Estructuración de datos</li>
+          </ul>
+        </div>
+        <div class="stack-item">
+          <h3>Procesos y gestión</h3>
+          <ul>
+            <li>BPMN</li>
+            <li>ISO 9001</li>
+            <li>Control de gestión</li>
+            <li>Mejora continua</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proyectos">
+      <h2 class="section-title">Proyectos destacados</h2>
+      <p class="section-intro">
+        Estos proyectos muestran una ruta de desarrollo progresiva en programación, análisis de datos,
+        bases de datos y visualización de información.
+      </p>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-top">
+            <h3>Sistema de Gestión de Contactos</h3>
+            <p>
+              Aplicación desarrollada en Python para administrar contactos mediante operaciones de registro,
+              edición, eliminación y búsqueda, fortaleciendo lógica de programación y manejo estructurado de datos.
+            </p>
+            <div class="project-badges">
+              <span class="project-badge">Python</span>
+              <span class="project-badge">CRUD</span>
+              <span class="project-badge">Lógica</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://github.com/JsManuelG/Proyecto-Modulo-3---Programacion-en-Python" target="_blank">Ver repositorio</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-top">
+            <h3>Análisis Exploratorio de Datos – ComercioYA</h3>
+            <p>
+              Proyecto de EDA con Python enfocado en detectar patrones de compra, variables relevantes,
+              relaciones entre comportamientos y oportunidades para apoyar decisiones comerciales.
+            </p>
+            <div class="project-badges">
+              <span class="project-badge">Python</span>
+              <span class="project-badge">EDA</span>
+              <span class="project-badge">Insights</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://github.com/JsManuelG/Proyecto-Modulo-5---Analisis-Exploratorio-de-Datos-ComercioYA-" target="_blank">Ver repositorio</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-top">
+            <h3>Inferencia Estadística – Hábitos Saludables</h3>
+            <p>
+              Análisis estadístico aplicado a variables de sueño, alimentación y actividad física,
+              utilizando técnicas de inferencia para apoyar conclusiones y recomendaciones fundamentadas.
+            </p>
+            <div class="project-badges">
+              <span class="project-badge">Estadística</span>
+              <span class="project-badge">Python</span>
+              <span class="project-badge">Visualización</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://github.com/JsManuelG/Proyecto-Modulo-6---Inferencia-Estadistica-de-Habitos-Saludables-en-Estudiantes" target="_blank">Ver repositorio</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-top">
+            <h3>Base de Datos SQLite – ComercioYA</h3>
+            <p>
+              Diseño y manipulación de tablas en SQLite para almacenar, consultar y estructurar información
+              de negocio, reforzando fundamentos de bases de datos y consultas SQL.
+            </p>
+            <div class="project-badges">
+              <span class="project-badge">SQL</span>
+              <span class="project-badge">SQLite</span>
+              <span class="project-badge">Modelado</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://github.com/JsManuelG/Proyecto-Modulo-7---Creaci-n-y-Manipulaci-n-de-Tablas-con-SQLite-ComercioYA-" target="_blank">Ver repositorio</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-top">
+            <h3>Dashboard BI de Desempeño Comercial</h3>
+            <p>
+              Informe interactivo en Power BI para análisis comercial, con foco en indicadores,
+              visualización ejecutiva y apoyo a la toma de decisiones mediante dashboards.
+            </p>
+            <div class="project-badges">
+              <span class="project-badge">Power BI</span>
+              <span class="project-badge">KPIs</span>
+              <span class="project-badge">Dashboard</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <a class="btn btn-primary" href="https://github.com/JsManuelG/Proyecto-Modulo-8---Fundamentos-Business-Intelligence-Informe-de-Desempe-o-Comercial-Interactivo-." target="_blank">Ver repositorio</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="cv">
+      <h2 class="section-title">CV y perfil profesional</h2>
+      <div class="cv-card">
+        <div class="cv-actions">
+          <a class="btn btn-primary" href="CV_José_Manuel.pdf" target="_blank">Abrir CV</a>
+          <a class="btn btn-secondary" href="CV_José_Manuel.pdf" download>Descargar CV</a>
+        </div>
+        <iframe src="CV_José_Manuel.pdf"></iframe>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <h2 class="section-title">Contacto</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Email</h3>
+          <p>jsm.gover@gmail.com</p>
+        </div>
+        <div class="contact-card">
+          <h3>GitHub</h3>
+          <p><a href="https://github.com/JsManuelG" target="_blank">github.com/JsManuelG</a></p>
+        </div>
+        <div class="contact-card">
+          <h3>LinkedIn</h3>
+          <p><a href="#" target="_blank">https://www.linkedin.com/in/josé-manuel-gonzález-verdejo/</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    © 2026 José Manuel González | Portafolio profesional
+    © 2026 José Manuel González · Portafolio profesional orientado a Data, BI y Transformación Digital
   </footer>
-
 </body>
 </html>
